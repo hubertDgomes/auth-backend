@@ -4,9 +4,12 @@ const app = express();
 import routers from './routes/authRoutes.js'
 import session from 'express-session';
 import cors from 'cors'
+import 'dotenv/config'
 
 app.use(express.json())
 app.use(cors())
+
+const PORT = process.env.PORT || 3000
 
 app.use(session({
   secret: 'keyboard cat',
@@ -22,6 +25,6 @@ app.get("/", (req , res)=>{
 dbConnector()
 app.use("/api" , routers)
 
-app.listen(3000, ()=>{
+app.listen(PORT, ()=>{
     console.log("Server is running");
 })

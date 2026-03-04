@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import 'dotenv/config'
+
 
 const emailVar = async (email , otp , name) => {
   const transporter = nodemailer.createTransport({
@@ -6,8 +8,8 @@ const emailVar = async (email , otp , name) => {
     port: 587,
     secure: false, 
     auth: {
-      user: "gomeshubert8@gmail.com",
-      pass: "kluuidsezmhgjzhe",
+      user: `${process.env.EMAIL}`,
+      pass: `${process.env.PASSWORD}`,
     },
   });
 
