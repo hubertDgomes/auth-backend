@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import 'dotenv/config'
 const emailVar = async (email , otp , name) => {
   const transporter = nodemailer.createTransport({
-    service: "smtp.gmail.com",
+    service: "gmail",
     port: 587,
     secure: false, 
     auth: {
