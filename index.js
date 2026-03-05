@@ -16,6 +16,8 @@ app.use(cors({
 
 const PORT = process.env.PORT || 3000
 
+app.set("trust proxy", 1)
+
 app.use(session({
   secret: "secret",
   resave: false,
