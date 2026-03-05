@@ -5,7 +5,6 @@ import routers from './routes/authRoutes.js'
 import session from 'express-session';
 import cors from 'cors'
 import 'dotenv/config'
-import MongoStore from "connect-mongo"
 
 
 app.use(express.json())
