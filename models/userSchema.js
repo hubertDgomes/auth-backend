@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
-import { type } from "os";
 
 const userSchema = new Schema(
   {
@@ -17,10 +16,6 @@ const userSchema = new Schema(
     },
     otp : String,
     expOtp : Date,
-    ifProfileCreated : {
-      type : Boolean,
-      default : false
-    }
   },
   { timestamps: true },
 );
