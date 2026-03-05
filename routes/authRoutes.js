@@ -15,7 +15,7 @@ router.post("/login", loginController)
 router.get("/logout", logout)
 router.post("/profile" , createProfile)
 router.get("/getprofile" , getProfile)
-router.get("/dashboard" , redirectMiddleware , dashboard)
+router.get("/dashboard" , redirectMiddleware , createProfile)
 
 
 export default router
