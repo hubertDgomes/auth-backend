@@ -5,6 +5,8 @@ import routers from './routes/authRoutes.js'
 import session from 'express-session';
 import cors from 'cors'
 import 'dotenv/config'
+import MongoStore from "connect-mongo"
+
 
 app.use(express.json())
 app.use(cors({
@@ -15,10 +17,16 @@ app.use(cors({
 const PORT = process.env.PORT || 3000
 
 app.use(session({
-  secret: 'secret',
+  secret: "secret",
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: true , sameSite : "none"}
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO
+  }),
+  cookie: {
+    secure: true,
+    sameSite: "none"
+  }
 }))
 
 app.get("/", (req , res)=>{
