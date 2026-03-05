@@ -18,7 +18,7 @@ app.use(session({
   secret: 'secret',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: { secure: true , sameSite : "none"}
 }))
 
 app.get("/", (req , res)=>{
