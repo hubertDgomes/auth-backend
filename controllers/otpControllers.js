@@ -5,6 +5,9 @@ const otpControllers = async (req, res) => {
   if (!email) {
     return res.status(400).json({ msg: "Email is missing!" });
   }
+  if (!otp) {
+    return res.status(400).json({ msg: "OTP is missing!" });
+  }
   const user = await userSchema.findOne({ email });
   if (!user) {
     return res.status(400).json({ msg: "User not found!" });
