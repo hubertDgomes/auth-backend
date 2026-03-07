@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
-import 'dotenv/config'
-const emailVar = async (email , otp , name) => {
+import "dotenv/config";
+
+const emailVar = async (email, otp, name) => {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -11,14 +12,12 @@ const emailVar = async (email , otp , name) => {
     },
   });
 
-
-  try {
-    const info = await transporter.sendMail({
-      from: process.env.EMAIL,
-      to: email,
-      subject: "Email Verification",
-      text: `Hello ${name}, your OTP is: ${otp}`,
-      html: `<!DOCTYPE html>
+  const info = await transporter.sendMail({
+    from: process.env.EMAIL,
+    to: email,
+    subject: "Email Verification",
+    text: `Hello ${name}, your OTP is: ${otp}`,
+    html: `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -66,14 +65,7 @@ const emailVar = async (email , otp , name) => {
 
 </body>
 </html>`,
-    });
-    console.log("Email sent successfully:", info.messageId);
-    return true;
-  } catch (error) {
-    console.error("Failed to send email:", error.message);
-    throw error;
-  }
+  });
 };
-
 
 export default emailVar;

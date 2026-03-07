@@ -9,7 +9,7 @@ import 'dotenv/config'
 
 app.use(express.json())
 app.use(cors({
-  origin : 'https://auth-client-drab.vercel.app',
+  origin : ['http://localhost:5173' , 'https://auth-client-drab.vercel.app'],
   credentials : true  
 }))
 
@@ -25,7 +25,7 @@ app.use(session({
     secure: true,
     sameSite: "none", //"lax" is recommended for Local development. Otherwise "None".
     // Browsers reject that cookie because "none" requires HTTPS.
-    httpOnly : false
+    httpOnly : true
   }
 }))
 
