@@ -10,7 +10,7 @@ import 'dotenv/config'
 app.use(express.json())
 app.use(cors({
   origin : 'https://auth-client-drab.vercel.app',
-  credentials : true
+  credentials : true  
 }))
 
 const PORT = process.env.PORT || 3000
