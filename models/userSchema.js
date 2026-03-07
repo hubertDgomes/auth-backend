@@ -16,6 +16,10 @@ const userSchema = new Schema(
     },
     otp : String,
     expOtp : Date,
+    isProfileCreated : {
+      type : Boolean,
+      default : false
+    }
   },
   { timestamps: true },
 );

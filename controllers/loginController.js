@@ -31,13 +31,8 @@ const loginController = async (req, res) => {
     email: user.email,
   };
 
-  req.session.save((err) => {
-    if (err) {
-      return res.status(500).json({ msg: "Session save failed" });
-    }
+  res.json({ msg: "Login done!" });
 
-    res.json({ msg: "Login done!" });
-  });
 };
 
 export default loginController;

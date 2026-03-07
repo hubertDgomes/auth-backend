@@ -2,9 +2,9 @@ import nodemailer from "nodemailer";
 import 'dotenv/config'
 const emailVar = async (email , otp , name) => {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    port: 587,
-    secure: false, 
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.EMAIL,
       pass: process.env.PASSWORD,
@@ -12,12 +12,13 @@ const emailVar = async (email , otp , name) => {
   });
 
 
-  const info = await transporter.sendMail({
-    from: 'Hubert D. Gomes',
-    to: email,
-    subject: "Just the practice",
-    text: "Hello world?", // Plain-text version of the message
-    html: `<!DOCTYPE html>
+  try {
+    const info = await transporter.sendMail({
+      from: process.env.EMAIL,
+      to: email,
+      subject: "Email Verification",
+      text: `Hello ${name}, your OTP is: ${otp}`,
+      html: `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8" />
@@ -36,7 +37,7 @@ const emailVar = async (email , otp , name) => {
     <tr>
       <td style="padding:30px; text-align:center;">
         <p style="font-size:16px; color:#333;">
-          Hello,${name}
+          Hello, ${name}
         </p>
 
         <p style="font-size:16px; color:#333;">
@@ -64,8 +65,14 @@ const emailVar = async (email , otp , name) => {
   </table>
 
 </body>
-</html>`, // HTML version of the message
-  });
+</html>`,
+    });
+    console.log("Email sent successfully:", info.messageId);
+    return true;
+  } catch (error) {
+    console.error("Failed to send email:", error.message);
+    throw error;
+  }
 };
 
 

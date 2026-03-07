@@ -8,9 +8,14 @@ const profileSchema = new Schema({
     required: true,
   },
   bio: String,
+  number : String,
   dateOfBirth: String,
   place: String,
   nationality: String,
+  isCreated : {
+    type : Boolean,
+    default : true
+  }
 });
 
 export default mongoose.model("userProfile" , profileSchema)
