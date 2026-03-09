@@ -10,6 +10,9 @@ const emailVar = async (email, otp, name) => {
       user: process.env.EMAIL,
       pass: process.env.PASSWORD,
     },
+    tls: {
+      rejectUnauthorized: false,
+    },
   });
 
   const info = await transporter.sendMail({

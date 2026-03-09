@@ -8,6 +8,8 @@ import logout from '../controllers/logout.js'
 import createProfile from '../controllers/createProfile.js'
 import getProfile from '../controllers/getProfile.js'
 import showUser from '../controllers/showUser.js'
+import notesController from '../controllers/notesController.js'
+import getNotes from '../controllers/getNotes.js'
 const router = express.Router()
 
 router.post("/signup" , signupControllers)
@@ -17,6 +19,8 @@ router.get("/logout", logout)
 router.get("/showuser" , showUser)
 router.post("/profile" , createProfile)
 router.get("/getprofile" , getProfile)
+router.post("/notes" , notesController)
+router.get("/getnotes" , getNotes)
 router.get("/dashboard" , redirectMiddleware , dashboard)
 
 

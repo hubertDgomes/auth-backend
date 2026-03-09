@@ -22,8 +22,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: true,
-    sameSite: "none", //"lax" is recommended for Local development. Otherwise "None".
+    secure: false,
+    sameSite: "lax", //"lax" is recommended for Local development. Otherwise "None".
     // Browsers reject that cookie because "none" requires HTTPS.
     httpOnly : true
   }
